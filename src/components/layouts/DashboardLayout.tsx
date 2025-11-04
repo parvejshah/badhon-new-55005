@@ -13,7 +13,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { Home, Award, Users, Droplet, Trophy, User, Settings, LogOut, Heart, BarChart } from 'lucide-react';
+import { Home, Award, Users, Droplet, Trophy, Settings, LogOut, Heart, BarChart } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -30,7 +30,6 @@ const DashboardSidebar = () => {
     { title: 'Donor Portal', url: '/donor-portal', icon: Heart },
     { title: 'Analytics', url: '/analytics', icon: BarChart, roles: ['admin', 'volunteer'] },
     { title: 'Leaderboards', url: '/leaderboards', icon: Trophy },
-    { title: 'My Profile', url: '/profile', icon: User },
   ];
 
   const filteredNavItems = navItems.filter(item => {

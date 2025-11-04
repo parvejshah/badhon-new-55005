@@ -13,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import Donors from "./pages/Donors";
 import BloodRequests from "./pages/BloodRequests";
 import Leaderboards from "./pages/Leaderboards";
-import Profile from "./pages/Profile";
 import AdminSettings from "./pages/AdminSettings";
 import DonorPortal from "./pages/DonorPortal";
 import Analytics from "./pages/Analytics";
@@ -53,7 +52,6 @@ const App = () => (
             <Route path="/donors" element={<Donors />} />
             <Route path="/blood-requests" element={<BloodRequests />} />
             <Route path="/leaderboards" element={<Leaderboards />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/admin-settings" element={<AdminSettings />} />
             <Route path="/donor-portal" element={<DonorPortal />} />
             <Route path="/analytics" element={<Analytics />} />
