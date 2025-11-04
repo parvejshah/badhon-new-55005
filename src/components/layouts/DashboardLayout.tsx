@@ -13,7 +13,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { Home, Award, Users, Droplet, Trophy, User, Settings, LogOut } from 'lucide-react';
+import { Home, Award, Users, Droplet, Trophy, User, Settings, LogOut, Heart, BarChart } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -24,9 +24,11 @@ const DashboardSidebar = () => {
 
   const navItems = [
     { title: 'Home', url: '/', icon: Home },
-    { title: 'Certificates', url: '/certificates', icon: Award },
+    { title: 'Certificates', url: '/dashboard', icon: Award },
     { title: 'Donors', url: '/donors', icon: Users, roles: ['admin', 'volunteer'] },
-    { title: 'Blood Requests', url: '/requests', icon: Droplet, roles: ['admin', 'volunteer'] },
+    { title: 'Blood Requests', url: '/blood-requests', icon: Droplet, roles: ['admin', 'volunteer'] },
+    { title: 'Donor Portal', url: '/donor-portal', icon: Heart },
+    { title: 'Analytics', url: '/analytics', icon: BarChart, roles: ['admin', 'volunteer'] },
     { title: 'Leaderboards', url: '/leaderboards', icon: Trophy },
     { title: 'My Profile', url: '/profile', icon: User },
   ];

@@ -15,6 +15,8 @@ import BloodRequests from "./pages/BloodRequests";
 import Leaderboards from "./pages/Leaderboards";
 import Profile from "./pages/Profile";
 import AdminSettings from "./pages/AdminSettings";
+import DonorPortal from "./pages/DonorPortal";
+import Analytics from "./pages/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,8 @@ const App = () => (
             <Route path="/leaderboards" element={<Leaderboards />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/admin-settings" element={<AdminSettings />} />
+            <Route path="/donor-portal" element={<DonorPortal />} />
+            <Route path="/analytics" element={<Analytics />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
