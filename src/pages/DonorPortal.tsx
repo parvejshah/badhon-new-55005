@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,11 +16,13 @@ import { Heart, Calendar, Phone, Mail, Building2, User, FileText, Activity } fro
 import { format } from 'date-fns';
 
 export default function DonorPortal() {
-  const { user } = useAuth();
+  const { user, isAdmin, isVolunteer } = useAuth();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [donorProfile, setDonorProfile] = useState<any>(null);
   const [donations, setDonations] = useState<any[]>([]);
+  
+  const canEditAvailability = isAdmin || isVolunteer;
   
   const [formData, setFormData] = useState({
     name: '',
@@ -84,18 +88,24 @@ export default function DonorPortal() {
     setSaving(true);
     try {
       if (donorProfile) {
-        // Update existing profile
+        // Build update object based on user permissions
+        const updates: any = {
+          name: formData.name,
+          phone: formData.phone,
+          hall: formData.hall,
+          department: formData.department,
+        };
+
+        // Only admins/volunteers can update availability settings
+        if (canEditAvailability) {
+          updates.status = formData.status;
+          updates.medical_eligible = formData.medical_eligible;
+          updates.availability_notes = formData.availability_notes;
+        }
+
         const { error } = await supabase
           .from('donors')
-          .update({
-            name: formData.name,
-            phone: formData.phone,
-            hall: formData.hall,
-            department: formData.department,
-            status: formData.status,
-            medical_eligible: formData.medical_eligible,
-            availability_notes: formData.availability_notes,
-          })
+          .update(updates)
           .eq('id', donorProfile.id);
 
         if (error) throw error;
@@ -294,11 +304,21 @@ export default function DonorPortal() {
               Availability Settings
             </h3>
 
+            {!canEditAvailability && (
+              <Alert>
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>
+                  Availability settings can only be updated by administrators and volunteers.
+                </AlertDescription>
+              </Alert>
+            )}
+
             <div className="space-y-2">
               <Label htmlFor="status">Current Status</Label>
               <Select
                 value={formData.status}
                 onValueChange={(value) => setFormData({ ...formData, status: value })}
+                disabled={!canEditAvailability}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -321,6 +341,7 @@ export default function DonorPortal() {
                 id="medical_eligible"
                 checked={formData.medical_eligible}
                 onCheckedChange={(checked) => setFormData({ ...formData, medical_eligible: checked })}
+                disabled={!canEditAvailability}
               />
             </div>
 
@@ -335,6 +356,7 @@ export default function DonorPortal() {
                 onChange={(e) => setFormData({ ...formData, availability_notes: e.target.value })}
                 placeholder="Any special notes about your availability (e.g., exam period, travel plans)"
                 rows={3}
+                disabled={!canEditAvailability}
               />
             </div>
           </div>

@@ -51,15 +51,10 @@ const DashboardSidebar = () => {
             <SidebarMenu>
               {filteredNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={false}>
                     <NavLink
                       to={item.url}
                       end={item.url === '/'}
-                      className={({ isActive }) =>
-                        isActive
-                          ? 'bg-primary/10 text-primary font-medium'
-                          : 'hover:bg-muted/50'
-                      }
                     >
                       <item.icon className="h-4 w-4" />
                       {open && <span>{item.title}</span>}
@@ -70,15 +65,8 @@ const DashboardSidebar = () => {
               
               {isAdmin && (
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <NavLink
-                      to="/admin"
-                      className={({ isActive }) =>
-                        isActive
-                          ? 'bg-primary/10 text-primary font-medium'
-                          : 'hover:bg-muted/50'
-                      }
-                    >
+                  <SidebarMenuButton asChild isActive={false}>
+                    <NavLink to="/admin-settings">
                       <Settings className="h-4 w-4" />
                       {open && <span>Admin Settings</span>}
                     </NavLink>
