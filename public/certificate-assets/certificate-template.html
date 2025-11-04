@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Acknowledgment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="certificate">
+            <header>
+                <div class="header-left">একের রক্ত অন্যের জীবন</div>
+                <div class="logo">
+                    <!-- Badhan logo (local file) -->
+                    <img src="/certificate-assets/badhanlogo.gif" alt="Badhan logo" class="logo-img">
+                </div>
+                <div class="header-right">রক্তই হোক আত্মার বাঁধন</div>
+            </header>
+
+            <div class="info-box">
+                <p>Blood Group: {{blood_group}}</p>
+                <p>Serial No. {{unique id}}</p>
+            </div>
+
+            <div class="main-content">
+                <h1 class="title-badhan">BADHAN</h1>
+                <p class="subtitle">A Voluntary Blood Donors' Organization</p>
+                <p class="registration">Est.- 1997: Reg. No. DHA- 06152</p>
+                <h2 class="certificate-title">Certificate of Acknowledgment</h2>
+
+                <div class="acknowledgment-text">
+                    <p>
+                        We are very glad to certify of acknowledgement for Mr./Mrs. <span class="underline">{{donorname}}</span>,
+                        son/daughter of <span class="underline">{{father'sname}}</span> & <span class="underline">{{mother'sanme}}</span>,
+                        student of the Faculty/Institute/Department of <span class="underline">{{departmentname}}</span> as well as
+                        <span class="underline">{{hallname}}, University of Dhaka</span> to salute him/her for his/her noble humanitarian effort by donating fresh blood on
+                        voluntary basis. He/She has promised to continue this effort for suffering humanity for the rest of his/her life.
+                    </p>
+                    <p class="wish">
+                        We wish him/her every success in life.
+                    </p>
+                </div>
+            </div>
+
+            <footer>
+                <div class="signature">
+                    <p class="sign-line">Provost</p>
+                    <p>{{hallanme}} Hall,</p>
+                    <p>University Of Dhaka</p>
+                </div>
+                <div class="signature">
+                    <p class="sign-line">President/Secretary</p>
+                    <p class="badhan-red">Badhan</p>
+                    <p>{{hallanme}}, Dhaka University Zone</p>
+                </div>
+                <div class="signature">
+                    <p class="sign-line">President/Secretary</p>
+                    <p class="badhan-red">Badhan</p>
+                    <p>Dhaka University Zone</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
