@@ -1,33 +1,21 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
 import { Award, LayoutDashboard, Heart, Users, FileText, Mail, Github, Linkedin, Droplet } from 'lucide-react';
 import heroBanner from '@/assets/hero-banner.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-background">
       {/* Top Navigation Buttons */}
-      <div className="fixed top-4 right-4 z-50 flex gap-3">
-        {user && (
-          <button
-            onClick={() => navigate('/dashboard')}
-            className="flex items-center gap-2 px-4 py-2 bg-white text-primary hover:bg-white/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
-          >
-            <LayoutDashboard className="h-4 w-4" />
-            Go to Dashboard
-          </button>
-        )}
-        {!user && (
-          <button
-            onClick={() => navigate('/auth')}
-            className="flex items-center gap-2 px-4 py-2 bg-white text-primary hover:bg-white/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
-          >
-            Sign In
-          </button>
-        )}
+      <div className="fixed top-4 right-4 z-50">
+        <button
+          onClick={() => navigate('/dashboard')}
+          className="flex items-center gap-2 px-4 py-2 bg-white text-primary hover:bg-white/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        >
+          <LayoutDashboard className="h-4 w-4" />
+          Go to Dashboard
+        </button>
       </div>
 
       {/* Hero Banner */}
@@ -115,10 +103,10 @@ const Index = () => {
 
         <div className="text-center">
           <button
-            onClick={() => navigate(user ? '/dashboard' : '/auth')}
+            onClick={() => navigate('/dashboard')}
             className="px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 text-lg"
           >
-            {user ? 'Go to Dashboard' : 'Get Started Now'}
+            Get Started Now
           </button>
         </div>
       </main>

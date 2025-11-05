@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSheets, Sheet } from '@/hooks/useSheets';
-import { useAuth } from '@/hooks/useAuth';
 import { UploadDropzone } from '@/components/UploadDropzone';
 import { DonorData } from '@/components/DataPreview';
 import { EditableDataTable } from '@/components/EditableDataTable';
@@ -13,10 +12,10 @@ import { ExportFormatSelector, ExportFormat } from '@/components/ExportFormatSel
 import { parseExcelFile } from '@/lib/excelParser';
 import { generateCertificates } from '@/lib/certificateGenerator';
 import { toast } from '@/hooks/use-toast';
-import { Home, LogOut, Droplet, FileText, Users, Sparkles, Eye, Trash2, Pencil, Loader2, Plus, Calendar, Building } from 'lucide-react';
+import { Home, Droplet, FileText, Users, Sparkles, Eye, Trash2, Pencil, Loader2, Plus, Calendar, Building } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { CreateSheetDialog } from '@/components/CreateSheetDialog';
 import { EditSheetDialog } from '@/components/EditSheetDialog';
@@ -34,7 +33,6 @@ import headerBg from '@/assets/header-bg.jpg';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { signOut } = useAuth();
   const { saveSheet, fetchSheets, deleteSheet, createEmptySheet, updateSheet, loading } = useSheets();
   const [file, setFile] = useState<File | null>(null);
   const [data, setData] = useState<DonorData[]>([]);
@@ -47,11 +45,6 @@ export default function Dashboard() {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [editSheet, setEditSheet] = useState<Sheet | null>(null);
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/auth');
-  };
 
   useEffect(() => {
     loadSheets();
@@ -180,16 +173,10 @@ export default function Dashboard() {
               </h1>
               <p className="text-white/90 mt-1">Create certificates for blood donors</p>
             </div>
-            <div className="flex gap-2">
-              <Button onClick={() => navigate('/')} size="lg" className="bg-white text-primary hover:bg-white/90">
-                <Home className="mr-2 h-5 w-5" />
-                Home
-              </Button>
-              <Button onClick={handleSignOut} size="lg" variant="outline" className="bg-white/20 border-white/30 text-white hover:bg-white/30">
-                <LogOut className="mr-2 h-5 w-5" />
-                Sign Out
-              </Button>
-            </div>
+            <Button onClick={() => navigate('/')} size="lg" className="bg-white text-primary hover:bg-white/90">
+              <Home className="mr-2 h-5 w-5" />
+              Home
+            </Button>
           </div>
         </div>
       </header>
