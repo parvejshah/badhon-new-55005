@@ -50,46 +50,52 @@ export function SheetAnalysis({ sheetData, sheetName, hallName }: SheetAnalysisP
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Sparkles className="h-6 w-6 text-primary" />
-          AI Sheet Analysis
+    <Card className="border-2 border-primary/20 shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10">
+        <CardTitle className="flex items-center gap-3 text-xl">
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Sparkles className="h-6 w-6 text-primary" />
+          </div>
+          AI-Powered Sheet Analysis
         </CardTitle>
-        <CardDescription>
-          Get AI-powered insights about missing fields and data quality
+        <CardDescription className="text-base">
+          Get intelligent insights about missing fields, data quality, and sheet statistics powered by AI
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 pt-6">
         <Button
           onClick={handleAnalyze}
           disabled={analyzing || sheetData.length === 0}
-          className="w-full"
+          className="w-full h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all"
+          size="lg"
         >
           {analyzing ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Analyzing...
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              Analyzing with AI...
             </>
           ) : (
             <>
-              <Sparkles className="mr-2 h-4 w-4" />
-              Analyze Sheet
+              <Sparkles className="mr-2 h-5 w-5" />
+              Analyze Sheet with AI
             </>
           )}
         </Button>
 
         {error && (
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
+          <Alert variant="destructive" className="border-2">
+            <AlertCircle className="h-5 w-5" />
+            <AlertDescription className="text-sm font-medium">{error}</AlertDescription>
           </Alert>
         )}
 
         {analysis && (
-          <div className="bg-muted rounded-lg p-4 space-y-2">
-            <h3 className="font-semibold text-sm text-foreground mb-2">Analysis Results</h3>
-            <div className="text-sm text-muted-foreground whitespace-pre-wrap">
+          <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-6 border-2 border-primary/20 shadow-inner space-y-3">
+            <div className="flex items-center gap-2 mb-3">
+              <Sparkles className="h-5 w-5 text-primary animate-pulse" />
+              <h3 className="font-bold text-base text-foreground">AI Analysis Results</h3>
+            </div>
+            <div className="text-sm text-foreground/90 whitespace-pre-wrap leading-relaxed bg-background/50 rounded-lg p-4 border border-primary/10">
               {analysis}
             </div>
           </div>

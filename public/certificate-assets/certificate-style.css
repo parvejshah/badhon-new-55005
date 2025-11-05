@@ -42,8 +42,8 @@ body {
 }
 
 .certificate-container {
-    width: 1000px; /* A4 landscape width at 96 DPI: 11.7" × 96 = 1000px */
-    min-height: 600px;
+    width: 297mm; /* A4 landscape width */
+    min-height: 210mm; /* A4 landscape height */
     padding: 0;
     box-sizing: border-box;
 }
@@ -51,7 +51,7 @@ body {
 .certificate {
     background-color: white;
     width: 100%;
-    height: 600px; /* A4 landscape height */
+    height: 210mm; /* A4 landscape height */
     position: relative;
     padding: 40px 70px 30px 70px;
     box-sizing: border-box;
@@ -179,11 +179,13 @@ header {
 
 .underline {
     padding: 0 5px;
-    font-weight: 800;
+    font-weight: 900;
     font-style: italic;
     text-decoration: underline;
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 1.5px;
     text-underline-offset: 2px;
+    color: #000000;
+    text-shadow: 0 0 0.5px #000000;
 }
 
 .wish {

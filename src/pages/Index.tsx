@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Award, LayoutDashboard, Heart, Users, FileText, Mail, Github, Linkedin, Droplet } from 'lucide-react';
+import { Award, LayoutDashboard, Heart, Users, FileText, Mail, Github, Linkedin, Droplet, Sparkles } from 'lucide-react';
 import heroBanner from '@/assets/hero-banner.jpg';
 
 const Index = () => {
@@ -39,7 +39,7 @@ const Index = () => {
             Badhon Certificate Generator
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mb-6 drop-shadow animate-fade-in">
-            Streamline your certificate creation process with our automated solution for Amar Ekushay Hall blood donors
+            AI-powered certificate creation for Amar Ekushay Hall blood donors with intelligent data analysis
           </p>
           <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
@@ -53,6 +53,10 @@ const Index = () => {
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
               <FileText className="h-5 w-5 text-white" />
               <span className="text-white font-medium">Multiple Formats</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+              <Sparkles className="h-5 w-5 text-white animate-pulse" />
+              <span className="text-white font-medium">AI-Powered</span>
             </div>
           </div>
         </div>
@@ -69,8 +73,8 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="text-center p-6 rounded-lg border bg-card">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow">
             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Heart className="h-8 w-8 text-primary" />
             </div>
@@ -80,7 +84,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="text-center p-6 rounded-lg border bg-card">
+          <div className="text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow">
             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="h-8 w-8 text-primary" />
             </div>
@@ -90,13 +94,23 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="text-center p-6 rounded-lg border bg-card">
+          <div className="text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow">
             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="h-8 w-8 text-primary" />
             </div>
             <h3 className="text-xl font-heading font-semibold mb-2">Multiple Formats</h3>
             <p className="text-muted-foreground">
               Export certificates as PDF, HTML, or Word documents based on your needs
+            </p>
+          </div>
+
+          <div className="text-center p-6 rounded-lg border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 hover:shadow-lg transition-shadow">
+            <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="h-8 w-8 text-primary animate-pulse" />
+            </div>
+            <h3 className="text-xl font-heading font-semibold mb-2">AI-Powered Analysis</h3>
+            <p className="text-muted-foreground">
+              Intelligent data validation and insights to ensure certificate quality and completeness
             </p>
           </div>
         </div>
