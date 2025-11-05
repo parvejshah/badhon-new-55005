@@ -11,6 +11,7 @@ import { generateCertificates } from '@/lib/certificateGenerator';
 import { ProgressIndicator } from '@/components/ProgressIndicator';
 import { EditableDataTable } from '@/components/EditableDataTable';
 import { EditSheetDialog } from '@/components/EditSheetDialog';
+import { SheetAnalysis } from '@/components/SheetAnalysis';
 import { toast } from 'sonner';
 
 export default function SheetView() {
@@ -162,6 +163,12 @@ export default function SheetView() {
       </header>
 
       <div className="container mx-auto px-4 pb-8 space-y-8">
+        <SheetAnalysis 
+          sheetData={donorData} 
+          sheetName={sheetName} 
+          hallName={hallName}
+        />
+
 
         <Card>
           <CardHeader>
