@@ -8,7 +8,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Top Navigation Buttons */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <button
+          onClick={() => navigate('/certificate-preview')}
+          className="flex items-center gap-2 px-4 py-2 bg-white text-primary hover:bg-white/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        >
+          <FileText className="h-4 w-4" />
+          View Sample
+        </button>
         <button
           onClick={() => navigate('/dashboard')}
           className="flex items-center gap-2 px-4 py-2 bg-white text-primary hover:bg-white/90 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
