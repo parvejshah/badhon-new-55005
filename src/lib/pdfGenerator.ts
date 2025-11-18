@@ -13,16 +13,21 @@ async function loadCertificateStyles(): Promise<string> {
   return await response.text();
 }
 
+function capitalizeFirstLetter(text: string): string {
+  if (!text) return text;
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function populateTemplate(template: string, data: DonorData, hallName: string): string {
   return template
-    .replace(/\{\{blood_group\}\}/g, data.bloodGroup)
+    .replace(/\{\{blood_group\}\}/g, capitalizeFirstLetter(data.bloodGroup))
     .replace(/\{\{unique id\}\}/g, data.serialNo)
-    .replace(/\{\{donorname\}\}/g, data.donorName)
-    .replace(/\{\{father'sname\}\}/g, data.fatherName)
-    .replace(/\{\{mother'sanme\}\}/g, data.motherName)
-    .replace(/\{\{departmentname\}\}/g, data.department)
-    .replace(/\{\{hallname\}\}/g, hallName)
-    .replace(/\{\{hallanme\}\}/g, hallName);
+    .replace(/\{\{donorname\}\}/g, capitalizeFirstLetter(data.donorName))
+    .replace(/\{\{father'sname\}\}/g, capitalizeFirstLetter(data.fatherName))
+    .replace(/\{\{mother'sanme\}\}/g, capitalizeFirstLetter(data.motherName))
+    .replace(/\{\{departmentname\}\}/g, capitalizeFirstLetter(data.department))
+    .replace(/\{\{hallname\}\}/g, capitalizeFirstLetter(hallName))
+    .replace(/\{\{hallanme\}\}/g, capitalizeFirstLetter(hallName));
 }
 
 async function generatePDFFromHTML(html: string, css: string): Promise<Blob> {
